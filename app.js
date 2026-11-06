@@ -1,4 +1,7 @@
 const usuarioRoutes = require('./routes/usuarioRoutes.js');
+const enderecoRoutes = require('./routes/enderecoRoutes.js');
+const alunoRoutes = require('./routes/alunoRoutes.js');
+const authRoutes = require('./routes/authRoutes.js');
 const swaggerDocument = require('./docs/swagger.js');
 const swaggerUi = require('swagger-ui-express');
 const express = require('express');
@@ -19,6 +22,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/usuarios', usuarioRoutes);
+app.use('/enderecos', enderecoRoutes);
+app.use('/alunos', alunoRoutes);
+app.use('/auth', authRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor executando em: http://localhost:${port}`)
