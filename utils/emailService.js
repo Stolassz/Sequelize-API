@@ -1,17 +1,22 @@
 const { default: nodemailer } = require("nodemailer");
 require('dotenv').config();
 
+const EMAIL_USERNAME = (process.env.EMAIL_USERNAME || '').trim();
+const EMAIL_PASSWORD = (process.env.EMAIL_PASSWORD || '').replace(/\s+/g, '');
+
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD
+        user: EMAIL_USERNAME,
+        pass: EMAIL_PASSWORD
     }
 });
 
 const sendVerificationEmail = async (email, verificationCode) => {
     const mailOptions = {
-        from: process.env.EMAIL_USERNAME,
+        from: `GT BEZERRA <${EMAIL_USERNAME}>`,
         to: email,
         subject: 'Verificação do Email - GT BEZERRA',
         html: `
