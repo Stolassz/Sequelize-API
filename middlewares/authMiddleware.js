@@ -2,7 +2,7 @@ const { verifyToken } = require("../utils/tokenService");
 
 const authMiddleware = (req, res, next) => {
     try {
-        const authHeader = req.headers.authorization;
+        const authHeader = req.headers?.authorization;
         if (!authHeader) {
             return res.status(401).json({ erro: 'Token não está no header!' })
         }

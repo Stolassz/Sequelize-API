@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +29,25 @@
   },
   "devDependencies": {
     "jest": "^30.5.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/tests/**",
+      "!**/docs/**",
+      "!**/models/**",
+      "!**/config/**",
+      "!**/migrations/**",
+      "!**/*.test.js",
+      "!**/*app.js" 
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "text-summary",
+      "lcov"
+    ]
   }
 }
